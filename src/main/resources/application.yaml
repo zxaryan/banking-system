@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: bank-system
+  profiles:
+    active:
+      - dev

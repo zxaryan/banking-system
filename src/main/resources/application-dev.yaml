@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: online-banking-system
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/online_banking
+    username: postgres
+    password: mysecretpassword
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
