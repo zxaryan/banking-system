@@ -1,13 +1,14 @@
-# Stage 1: Build the Spring Boot application
-FROM gradle:8.14-jdk25 AS build
+# Stage 1: Build
+FROM eclipse-temurin:25-jdk AS build
 
 WORKDIR /app
 
 COPY . .
 
-RUN gradle clean bootJar --no-daemon
+RUN chmod +x gradlew
+RUN ./gradlew clean bootJar --no-daemon
 
-# Stage 2: Run the application
+# Stage 2: Run
 FROM eclipse-temurin:25-jre
 
 WORKDIR /app
