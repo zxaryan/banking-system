@@ -1,4 +1,19 @@
-FROM eclipse-temurin:25-jre
+# Stage 1: Build the Spring Boot application
+FROM gradle:8.14-jdk25 AS build
+
 WORKDIR /app
-COPY build/libs/*.jar app.jar
-CMD ["java", "-jar", "app.jar"]
+
+COPY . .
+
+RUN gradle clean bootJar --no-daemon
+
+# Stage 2: Run the application
+FROM eclipse-temurin:25-jre
+
+WORKDIR /app
+
+COPY --from=build /app/build/libs/*.jar app.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
