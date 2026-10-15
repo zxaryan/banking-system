@@ -1,11 +1,8 @@
 spring:
-  application:
-    name: online-banking-system
-
   datasource:
     url: jdbc:postgresql://localhost:5432/online_banking
-    username: postgres
-    password: mysecretpassword
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:mysecretpassword}
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -14,5 +11,5 @@ spring:
       ddl-auto: update
 
 jwt:
-  secret: your-super-secret-key-that-is-at-least-32-characters-long
+  secret: ${JWT_SECRET:your-super-secret-key-that-is-at-least-32-characters-long}
   expiration: 3600000
