@@ -1,3 +1,4 @@
+
 package com.spring.bank_system.transaction;
 
 import com.spring.bank_system.account.Account;
@@ -28,6 +29,9 @@ public class LedgerEntry {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TransactionType type;
+
+    @Column(nullable = false, length = 255)
+    private String direction;
 
     @Column(nullable = false, precision = 19, scale = 2)
     private BigDecimal amount;
